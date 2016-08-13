@@ -27,7 +27,7 @@ class getRandomJoke(Resource):
     return {'joke': [i[0] for i in query.cursor.fetchall()]}
 class Home(Resource):
   def get(self):
-    return {'message': "This a FREE Yo' mama jokes api that gives random jokes. Created by Himanshu Gautam (http://www.github.com/himanshu81494)"}
+    return {'message': "This a FREE Yo' mama jokes api that gives random jokes. Created by Himanshu Gautam (http://www.github.com/himanshu81494)", "paths": ["/joke"]}
 
 api.add_resource(getRandomJoke, '/joke')
 api.add_resource(Home, '/')
@@ -36,3 +36,7 @@ if __name__ == '__main__':
   app.run(host="0.0.0.0")
 
 # insert()
+
+# to search for process id , as we know port is 5000
+# netstat -anp tcp | grep 5000
+# kill -9 <PID>
