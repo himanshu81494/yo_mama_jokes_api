@@ -26,12 +26,12 @@ class getRandomJoke(Resource):
     return {'joke': [i[0] for i in query.cursor.fetchall()]}
 class Home(Resource):
   def get(self):
-    return "Welcome"
+    return "Welcome \n This is a FREE Yo' mama jokes api. \n Made with love in India by Himanshu Gautam (github.com/himanshu81494)."
 
 api.add_resource(getRandomJoke, '/joke')
 api.add_resource(Home, '/')
 
 if __name__ == '__main__':
-  app.run()
+  app.run(host="0.0.0.0")
 
 # insert()
