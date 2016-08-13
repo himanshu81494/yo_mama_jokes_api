@@ -6,8 +6,7 @@ from sqlalchemy import create_engine
 e = create_engine('sqlite:///jokes.db')
 app = Flask(__name__)
 api = Api(app)
-# i used the jokes.txt file that contained Yo' mama jokes to insert
-# them to db using this funciton
+
 def insert():
   fname = 'jokes.txt'
   with open(fname) as f:
@@ -27,7 +26,12 @@ class getRandomJoke(Resource):
     return {'joke': [i[0] for i in query.cursor.fetchall()]}
 class Home(Resource):
   def get(self):
-    return {'message': "This a FREE Yo' mama jokes api that gives random jokes. Created by Himanshu Gautam (http://www.github.com/himanshu81494)"}
+    with open('Path/to/file', 'r') as content_file:
+      content = content_file.read()
+
+    print content
+    #return Response(content, mimetype="text/html")
+    return "welcome"
 
 api.add_resource(getRandomJoke, '/joke')
 api.add_resource(Home, '/')
